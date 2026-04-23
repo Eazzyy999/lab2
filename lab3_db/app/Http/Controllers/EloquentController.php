@@ -35,18 +35,4 @@ class EloquentController extends Controller
     public function destroy($id) {
         Post::destroy($id);
         return response()->json(['message' => 'Deleted']);
-    }
-
-    public function bigData() {
-        $startMemory = memory_get_usage();
-        
-        $posts = Post::lazy();
-        foreach ($posts as $post) {
-            $id = $post->id;
-        }
-
-        return response()->json([
-            'peak_memory_mb' => memory_get_peak_usage() / 1024 / 1024
-        ]);
-    }
-}
+    }}
