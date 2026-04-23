@@ -10,6 +10,12 @@ Route::get('/qb/joinInner', [App\Http\Controllers\QueryBuilderController::class,
 Route::get('/qb/joinLeft', [App\Http\Controllers\QueryBuilderController::class, 'joinLeft']);
 Route::get('/qb/joinRight', [App\Http\Controllers\QueryBuilderController::class, 'joinRight']);
 Route::get('/qb/insertUpdateDelete', [App\Http\Controllers\QueryBuilderController::class, 'insertUpdateDelete']);
+Route::get('/eq/index', [App\Http\Controllers\EloquentController::class, 'index']);
+Route::get('/eq/show/{id}', [App\Http\Controllers\EloquentController::class, 'show']);
+Route::get('/eq/bigData', [App\Http\Controllers\EloquentController::class, 'bigData']);
+Route::get('/eq/eager', [App\Http\Controllers\RelationshipController::class, 'eagerLoading']);
+Route::get('/eq/filters', [App\Http\Controllers\RelationshipController::class, 'filters']);
+Route::get('/eq/aggregates', [App\Http\Controllers\RelationshipController::class, 'aggregates']);
 Route::get('/raw-demo', function () {
     DB::statement('CREATE TABLE IF NOT EXISTS log_entries (id INT AUTO_INCREMENT PRIMARY KEY, message VARCHAR(255), created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)');
     DB::unprepared("INSERT INTO log_entries (message) VALUES ('Init log')");
